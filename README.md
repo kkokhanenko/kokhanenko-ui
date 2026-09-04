@@ -1,5 +1,8 @@
 # Kokhanenko UI
 
+[![Документация](https://img.shields.io/badge/документация-открыть-2563eb)](https://kkokhanenko.github.io/kokhanenko-ui/)
+[![Сборка документации](https://github.com/kkokhanenko/kokhanenko-ui/actions/workflows/documentation.yml/badge.svg)](https://github.com/kkokhanenko/kokhanenko-ui/actions/workflows/documentation.yml)
+
 Компактная модульная UI-библиотека для Vue 3. Репозиторий называется
 `kokhanenko-ui`, npm-пакет — `@kokhanenko/ui`.
 
@@ -70,8 +73,8 @@ import './styles/theme.css';
 ```
 
 Библиотека не хранит палитры конкретных продуктов, не выбирает тему и не
-сохраняет пользовательский выбор. Цветовая схема задаётся на
-любом родительском контейнере интерфейса:
+сохраняет пользовательский выбор. Цветовая схема задаётся на любом
+родительском контейнере интерфейса:
 
 ```html
 <html data-kui-scheme="system">
@@ -93,9 +96,9 @@ const collapsed = ref(false);
 const navigation = [
   { id: 'home', label: 'Главная', icon: '⌂' },
   {
-    id: 'services',
-    label: 'Сервисы',
-    children: [{ id: 'accounting', label: 'Распознавание расходов' }],
+    id: 'catalog',
+    label: 'Каталог',
+    children: [{ id: 'items', label: 'Элементы' }],
   },
 ];
 </script>
@@ -105,8 +108,8 @@ const navigation = [
     v-model:sidebar-collapsed="collapsed"
     :brand="{ name: 'Продукт', subtitle: 'Рабочая область' }"
     :navigation="navigation"
-    active-id="accounting"
-    title="Распознавание расходов"
+    active-id="items"
+    title="Элементы"
     @navigate="openSection"
   >
     <router-view />
@@ -143,3 +146,16 @@ npm run build
 
 После сборки проверьте, что в `dist/` существуют отдельные JS/CSS assets для
 компонентов, а `vue` отсутствует внутри их bundle.
+
+## Документация
+
+Подробный справочник компонентов находится в `documentation/`, собирается
+Docara 2.7.0 и автоматически публикуется на
+[GitHub Pages](https://kkokhanenko.github.io/kokhanenko-ui/):
+
+```bash
+cd documentation
+composer install
+php vendor/bin/docara build local
+php vendor/bin/docara verify-static build_local
+```

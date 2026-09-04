@@ -1,0 +1,6 @@
+{
+  "schema": "docara.section.v1",
+  "title": "Компоненты",
+  "preset": "docs",
+  "navigation": {"order": 50}
+}

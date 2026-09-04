@@ -1,0 +1,5 @@
+/vendor/
+/build_local/
+/build_production/
+/.playwright-cli/
+/.DS_Store

@@ -1,0 +1,8 @@
+{
+    "immutable": true,
+    "name": "simai/docara",
+    "schema": "docara.package_revision.v1",
+    "source_revision": "7939a7386474c64947128774b0e40624c801c4f1",
+    "tree_sha256": "760bc05e87be1b6225ee387191658709f4a9c5b4370adf6dbe839cdf71f29994",
+    "version": "v2.7.0"
+}

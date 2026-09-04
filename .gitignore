@@ -1,4 +1,8 @@
 node_modules/
+documentation/vendor/
+documentation/build_local/
+documentation/build_production/
+documentation/.playwright-cli/
 dist/
 coverage/
 output/
