@@ -1,0 +1,72 @@
+name: Documentation
+
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - documentation/**
+      - .github/workflows/documentation.yml
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: github-pages
+  cancel-in-progress: false
+
+jobs:
+  build:
+    name: Build and verify
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+
+      - name: Set up PHP
+        uses: shivammathur/setup-php@f3e473d116dcccaddc5834248c87452386958240 # 2.37.2
+        with:
+          php-version: '8.4'
+          tools: composer:v2
+          coverage: none
+
+      - name: Configure Pages
+        uses: actions/configure-pages@45bfe0192ca1faeb007ade9deae92b16b8254a0d # v6.0.0
+
+      - name: Install documentation dependencies
+        working-directory: documentation
+        run: composer install --no-interaction --prefer-dist --no-progress --optimize-autoloader
+
+      - name: Validate documentation
+        working-directory: documentation
+        run: |
+          php vendor/bin/docara doctor --json
+          php vendor/bin/docara validate project --json
+
+      - name: Build documentation
+        working-directory: documentation
+        run: php vendor/bin/docara build production
+
+      - name: Verify static output
+        working-directory: documentation
+        run: php vendor/bin/docara verify-static build_production
+
+      - name: Upload Pages artifact
+        uses: actions/upload-pages-artifact@fc324d3547104276b827a68afc52ff2a11cc49c9 # v5.0.0
+        with:
+          path: documentation/build_production
+
+  deploy:
+    name: Deploy
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@368f82528645a54fb793d4d04e342629a3f51346 # v5.0.1
