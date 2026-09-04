@@ -1,0 +1,29 @@
+.kui-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--kui-space-2, 0.5rem);
+  min-width: 0;
+  border: 1px solid transparent;
+  border-radius: var(--kui-radius-md, 12px);
+  font: 700 var(--kui-font-size-md, 0.9375rem) / 1 var(--kui-font-family, sans-serif);
+  cursor: pointer;
+  transition: background var(--kui-transition-fast, 160ms ease), border-color var(--kui-transition-fast, 160ms ease), color var(--kui-transition-fast, 160ms ease);
+}
+
+.kui-button:focus-visible { outline: 0; box-shadow: var(--kui-focus-ring); }
+.kui-button:disabled { cursor: not-allowed; opacity: 0.58; }
+.kui-button--sm { min-height: var(--kui-control-height-sm, 2rem); padding: 0 var(--kui-space-3, 0.75rem); font-size: var(--kui-font-size-sm, 0.8125rem); }
+.kui-button--md { min-height: var(--kui-control-height-md, 2.5rem); padding: 0 var(--kui-space-4, 1rem); }
+.kui-button--lg { min-height: var(--kui-control-height-lg, 3rem); padding: 0 var(--kui-space-5, 1.25rem); }
+.kui-button--block { width: 100%; }
+.kui-button--primary { color: var(--kui-color-on-primary, #fff); background: var(--kui-color-primary, #4f46e5); }
+.kui-button--primary:hover:not(:disabled) { background: var(--kui-color-primary-hover, #4338ca); }
+.kui-button--secondary { color: var(--kui-color-text, #17202b); border-color: var(--kui-color-border, #dce2e8); background: var(--kui-color-surface, #fff); }
+.kui-button--secondary:hover:not(:disabled), .kui-button--ghost:hover:not(:disabled) { background: var(--kui-color-surface-subtle, #f8fafb); }
+.kui-button--danger { color: var(--kui-color-on-danger, #fff); background: var(--kui-color-danger, #b42336); }
+.kui-button--ghost { color: var(--kui-color-text, #17202b); background: transparent; }
+.kui-button__spinner { width: 1em; height: 1em; border: 2px solid currentColor; border-right-color: transparent; border-radius: 50%; animation: kui-button-spin 0.7s linear infinite; }
+.kui-button__content { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+@keyframes kui-button-spin { to { transform: rotate(360deg); } }
+@media (prefers-reduced-motion: reduce) { .kui-button { transition: none; } .kui-button__spinner { animation-duration: 1.4s; } }

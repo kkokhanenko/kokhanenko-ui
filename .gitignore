@@ -1,0 +1,13 @@
+node_modules/
+dist/
+coverage/
+output/
+source/
+.env
+.env.*
+!.env.example
+*.log
+*.bak*
+*.codex-bak-*
+*.orig
+.DS_Store

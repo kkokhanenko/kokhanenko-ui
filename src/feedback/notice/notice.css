@@ -1,0 +1,11 @@
+.kui-notice { display: flex; align-items: flex-start; justify-content: space-between; gap: var(--kui-space-4, 1rem); padding: var(--kui-space-3, 0.75rem) var(--kui-space-4, 1rem); border: 1px solid var(--kui-color-border, #dce2e8); border-radius: var(--kui-radius-md, 12px); color: var(--kui-color-text, #17202b); background: var(--kui-color-surface-subtle, #f8fafb); font-family: var(--kui-font-family, sans-serif); }
+.kui-notice--primary { color: var(--kui-color-primary, #4f46e5); background: var(--kui-color-primary-soft, #eeecff); }
+.kui-notice--success { color: var(--kui-color-success, #087a4f); background: var(--kui-color-success-soft, #e1f5eb); }
+.kui-notice--warning { color: var(--kui-color-warning, #865a00); background: var(--kui-color-warning-soft, #fff0c2); }
+.kui-notice--danger { color: var(--kui-color-danger, #b42336); background: var(--kui-color-danger-soft, #fde7ea); }
+.kui-notice__body { display: grid; gap: var(--kui-space-1, 0.25rem); min-width: 0; }
+.kui-notice__title { display: block; }
+.kui-notice__content { color: inherit; }
+.kui-notice__dismiss { flex: 0 0 auto; width: 1.75rem; height: 1.75rem; border: 0; border-radius: var(--kui-radius-sm, 8px); color: currentColor; background: transparent; font: 700 1.25rem/1 sans-serif; cursor: pointer; }
+.kui-notice__dismiss:hover { background: var(--kui-color-hover-overlay, rgb(255 255 255 / 48%)); }
+.kui-notice__dismiss:focus-visible { outline: 0; box-shadow: var(--kui-focus-ring); }

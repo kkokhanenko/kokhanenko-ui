@@ -1,0 +1,73 @@
+.kui-app-shell { position: relative; display: flex; height: 100vh; min-height: 0; overflow: hidden; color: var(--kui-color-text, #17202b); background: var(--kui-color-canvas, #f4f6f8); }
+.kui-app-shell__sidebar { position: sticky; z-index: 30; top: 0; display: flex; flex: 0 0 17.5rem; flex-direction: column; height: 100vh; min-height: 0; padding: var(--kui-space-5, 1.25rem) var(--kui-space-3, 0.75rem); overflow: hidden; color: var(--kui-shell-sidebar-text, #f7f8fa); background: var(--kui-shell-sidebar-bg, #202733); transition: flex-basis var(--kui-transition-fast, 160ms ease); }
+.kui-app-shell--collapsed .kui-app-shell__sidebar { flex-basis: 5rem; }
+.kui-app-shell--collapsed .kui-app-shell__sidebar,
+.kui-app-shell--collapsed .kui-app-sidebar__nav { overflow: visible; }
+.kui-app-sidebar__brand { display: flex; align-items: center; gap: var(--kui-space-3, 0.75rem); min-height: 3rem; margin: 0 var(--kui-space-2, 0.5rem) var(--kui-space-6, 1.5rem); }
+.kui-app-sidebar__logo { display: inline-grid; flex: 0 0 2.75rem; place-items: center; width: 2.75rem; height: 2.75rem; overflow: hidden; border: 1px solid var(--kui-shell-sidebar-border, rgb(255 255 255 / 14%)); border-radius: var(--kui-radius-md, 12px); background: var(--kui-shell-sidebar-surface-hover, rgb(255 255 255 / 11%)); font-size: 1.25rem; font-weight: 800; }
+.kui-app-sidebar__logo img { display: block; max-width: 100%; max-height: 100%; object-fit: contain; }
+.kui-app-sidebar__brand-copy, .kui-app-sidebar__item-copy { display: grid; min-width: 0; }
+.kui-app-sidebar__brand-copy strong { font-size: 1.1rem; }
+.kui-app-sidebar__brand-copy small, .kui-app-sidebar__item-copy small { color: var(--kui-shell-sidebar-muted, rgb(247 248 250 / 60%)); }
+.kui-app-sidebar__nav { display: grid; align-content: start; flex: 1 1 auto; gap: var(--kui-space-2, 0.5rem); min-height: 0; overflow-y: auto; }
+.kui-app-sidebar__group { position: relative; display: grid; gap: var(--kui-space-2, 0.5rem); }
+.kui-app-sidebar__item, .kui-app-sidebar__child { width: 100%; color: var(--kui-shell-sidebar-item-text, rgb(247 248 250 / 82%)); background: transparent; font: inherit; text-align: left; text-decoration: none; cursor: pointer; }
+.kui-app-sidebar__item { display: flex; align-items: center; gap: var(--kui-space-3, 0.75rem); min-height: 3rem; padding: var(--kui-space-2, 0.5rem) var(--kui-space-3, 0.75rem); border-radius: var(--kui-radius-md, 12px); }
+.kui-app-sidebar__item { border: 1px solid var(--kui-shell-sidebar-border, rgb(255 255 255 / 14%)); }
+.kui-app-sidebar__child { border: 0; }
+.kui-app-sidebar__item:hover, .kui-app-sidebar__item--active { border-color: var(--kui-shell-sidebar-border-strong, rgb(255 255 255 / 22%)); color: var(--kui-shell-sidebar-text, #f7f8fa); background: var(--kui-shell-sidebar-surface-hover, rgb(255 255 255 / 11%)); }
+.kui-app-sidebar__item:focus-visible, .kui-app-sidebar__child:focus-visible, .kui-app-shell__collapse:focus-visible, .kui-app-shell__mobile-close:focus-visible { outline: 0; box-shadow: var(--kui-shell-sidebar-focus-ring, 0 0 0 3px rgb(255 255 255 / 28%)); }
+.kui-app-topbar__menu:focus-visible { outline: 0; box-shadow: var(--kui-focus-ring); }
+.kui-app-sidebar__item[aria-disabled="true"], .kui-app-sidebar__child[aria-disabled="true"] { cursor: not-allowed; opacity: 0.48; }
+.kui-app-sidebar__icon { display: inline-grid; flex: 0 0 1.5rem; place-items: center; width: 1.5rem; }
+.kui-app-sidebar__badge { margin-left: auto; padding: 0.15rem 0.45rem; border-radius: 999px; background: var(--kui-shell-sidebar-surface-hover, rgb(255 255 255 / 11%)); font-size: var(--kui-font-size-sm, 0.8125rem); }
+.kui-app-sidebar__caret { display: inline-grid; min-width: 1.4rem; height: 1.25rem; margin-left: auto; padding: 0 0.35rem; place-items: center; border: 1px solid var(--kui-shell-sidebar-border, rgb(255 255 255 / 14%)); border-radius: 999px; background: var(--kui-shell-sidebar-surface, rgb(255 255 255 / 8%)); font-size: 0.68rem; font-weight: 800; }
+.kui-app-sidebar__caret--open { border-color: var(--kui-shell-sidebar-border-strong, rgb(255 255 255 / 22%)); background: var(--kui-shell-sidebar-surface-hover, rgb(255 255 255 / 11%)); }
+.kui-app-sidebar__children { display: grid; gap: 2px; margin: 2px 0 2px 2.8rem; padding-left: var(--kui-space-2, 0.5rem); border-left: 1px solid var(--kui-shell-sidebar-border, rgb(255 255 255 / 14%)); }
+.kui-app-sidebar__child { display: grid; gap: 0.15rem; padding: var(--kui-space-2, 0.5rem); border-radius: var(--kui-radius-sm, 8px); font-size: var(--kui-font-size-sm, 0.8125rem); }
+.kui-app-sidebar__child small { color: var(--kui-shell-sidebar-muted, rgb(247 248 250 / 60%)); font-size: 0.72rem; }
+.kui-app-sidebar__child:hover, .kui-app-sidebar__child--active { color: var(--kui-shell-sidebar-text, #f7f8fa); background: var(--kui-shell-sidebar-surface, rgb(255 255 255 / 8%)); }
+.kui-app-shell__sidebar-footer { flex: 0 0 auto; }
+.kui-app-shell__collapse, .kui-app-shell__mobile-close { flex: 0 0 auto; min-height: 2.5rem; margin-top: var(--kui-space-3, 0.75rem); border: 1px solid var(--kui-shell-sidebar-border, rgb(255 255 255 / 14%)); border-radius: var(--kui-radius-md, 12px); color: var(--kui-shell-sidebar-text, #f7f8fa); background: var(--kui-shell-sidebar-surface, rgb(255 255 255 / 8%)); cursor: pointer; }
+.kui-app-shell__mobile-close { display: none; }
+.kui-app-shell__main { display: flex; flex: 1 1 auto; flex-direction: column; height: 100vh; min-width: 0; min-height: 0; padding: var(--kui-space-6, 1.5rem); overflow: hidden; }
+.kui-app-topbar { position: relative; z-index: 20; display: flex; flex: 0 0 auto; align-items: center; gap: var(--kui-space-4, 1rem); min-height: 4.75rem; margin-bottom: var(--kui-space-6, 1.5rem); padding: var(--kui-space-4, 1rem) var(--kui-space-5, 1.25rem); border: 1px solid var(--kui-shell-topbar-border, var(--kui-color-border, #dce2e8)); border-radius: var(--kui-radius-lg, 16px); background: var(--kui-shell-topbar-bg, rgb(255 255 255 / 94%)); box-shadow: var(--kui-shell-topbar-shadow, var(--kui-shadow-sm, 0 4px 14px rgb(17 24 39 / 8%))); backdrop-filter: blur(14px); }
+.kui-app-topbar__menu { display: none; min-width: 2.5rem; min-height: 2.5rem; border: 1px solid var(--kui-color-border, #dce2e8); border-radius: var(--kui-radius-md, 12px); background: var(--kui-color-surface, #fff); }
+.kui-app-topbar__heading { display: grid; min-width: 0; }
+.kui-app-topbar__eyebrow { color: var(--kui-color-primary, #4f46e5); font-size: 0.7rem; font-weight: 800; letter-spacing: 0.08em; text-transform: uppercase; }
+.kui-app-topbar__title { margin: 0; overflow: hidden; font-size: clamp(1.2rem, 2vw, 1.55rem); line-height: 1.2; text-overflow: ellipsis; white-space: nowrap; }
+.kui-app-topbar__actions { display: flex; align-items: center; gap: var(--kui-space-2, 0.5rem); margin-left: auto; }
+.kui-app-topbar__user { display: flex; align-items: center; gap: var(--kui-space-2, 0.5rem); }
+.kui-app-topbar__avatar { display: grid; place-items: center; width: 2.25rem; height: 2.25rem; border-radius: 50%; object-fit: cover; }
+.kui-app-topbar__avatar--fallback { color: var(--kui-color-on-primary, #fff); background: var(--kui-color-primary, #4f46e5); font-weight: 800; }
+.kui-app-topbar__user-name { max-width: 12rem; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; font-weight: 700; }
+.kui-app-shell__content { flex: 1 1 auto; min-height: 0; overflow-y: auto; }
+.kui-app-shell__footer { flex: 0 0 auto; padding: var(--kui-space-4, 1rem) 0 0; color: var(--kui-color-text-muted, #667180); }
+.kui-app-shell__backdrop { display: none; }
+
+.kui-app-shell--collapsed .kui-app-sidebar__children { position: absolute; z-index: 40; top: 0; left: calc(100% + 0.6rem); display: none; width: 15rem; margin: 0; padding: var(--kui-space-2, 0.5rem); border: 1px solid var(--kui-shell-sidebar-border-strong, rgb(255 255 255 / 22%)); border-radius: var(--kui-radius-md, 12px); background: var(--kui-shell-sidebar-bg, #202733); box-shadow: var(--kui-shell-sidebar-shadow, var(--kui-shadow-lg, 0 20px 45px rgb(15 23 42 / 24%))); }
+.kui-app-shell--collapsed .kui-app-sidebar__nav { align-items: center; }
+.kui-app-shell--collapsed .kui-app-sidebar__group { width: 100%; }
+.kui-app-shell--collapsed .kui-app-sidebar__item { position: relative; justify-content: center; min-height: 3.5rem; padding: 0; gap: 0; }
+.kui-app-shell--collapsed .kui-app-sidebar__icon { flex-basis: auto; }
+.kui-app-shell--collapsed .kui-app-sidebar__caret { position: absolute; top: 0.4rem; right: 0.35rem; min-width: 1.05rem; height: 1.05rem; padding: 0 0.22rem; border: 0; font-size: 0.625rem; line-height: 1; pointer-events: none; }
+.kui-app-shell--collapsed .kui-app-sidebar__group:hover .kui-app-sidebar__children,
+.kui-app-shell--collapsed .kui-app-sidebar__group:focus-within .kui-app-sidebar__children { display: grid; }
+
+@media (max-width: 760px) {
+  .kui-app-shell__sidebar, .kui-app-shell--collapsed .kui-app-shell__sidebar { position: fixed; left: 0; width: min(18rem, calc(100vw - 3rem)); overflow: hidden; transform: translateX(-105%); transition: transform var(--kui-transition-fast, 160ms ease); }
+  .kui-app-shell--collapsed .kui-app-sidebar__nav { overflow-y: auto; }
+  .kui-app-shell--mobile-open .kui-app-shell__sidebar { transform: translateX(0); }
+  .kui-app-shell__backdrop { position: fixed; z-index: 25; inset: 0; display: block; border: 0; background: var(--kui-color-overlay, rgb(15 23 42 / 52%)); }
+  .kui-app-shell__collapse { display: none; }
+  .kui-app-shell__mobile-close { position: absolute; top: var(--kui-space-2, 0.5rem); right: var(--kui-space-2, 0.5rem); display: grid; place-items: center; width: 2.5rem; margin: 0; font-size: 1.25rem; }
+  .kui-app-topbar__menu { display: grid; place-items: center; }
+  .kui-app-shell__main { padding: var(--kui-space-4, 1rem); }
+  .kui-app-topbar { margin-bottom: var(--kui-space-4, 1rem); }
+  .kui-app-shell--collapsed .kui-app-sidebar__children { position: static; display: grid; width: auto; margin-left: 2.8rem; padding: 0 0 0 var(--kui-space-2, 0.5rem); border: 0; border-left: 1px solid var(--kui-shell-sidebar-border, rgb(255 255 255 / 14%)); border-radius: 0; box-shadow: none; }
+  .kui-app-topbar__user-name { display: none; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .kui-app-shell__sidebar { transition: none; }
+}

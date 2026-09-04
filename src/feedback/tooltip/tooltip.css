@@ -1,0 +1,6 @@
+.kui-tooltip { position: relative; display: inline-flex; font-family: var(--kui-font-family, sans-serif); }
+.kui-tooltip__trigger { display: inline-grid; place-items: center; width: 1.5rem; height: 1.5rem; padding: 0; border: 1px solid var(--kui-color-border, #dce2e8); border-radius: 50%; color: var(--kui-color-text-muted, #667180); background: var(--kui-color-surface, #fff); font: 800 var(--kui-font-size-sm, 0.8125rem)/1 sans-serif; cursor: help; }
+.kui-tooltip__trigger:focus-visible { outline: 0; box-shadow: var(--kui-focus-ring); }
+.kui-tooltip__bubble { position: absolute; z-index: 40; left: 50%; width: max-content; max-width: min(18rem, 80vw); padding: var(--kui-space-2, 0.5rem) var(--kui-space-3, 0.75rem); border-radius: var(--kui-radius-sm, 8px); color: var(--kui-color-tooltip, #fff); background: var(--kui-color-tooltip-bg, #17202b); box-shadow: var(--kui-shadow-sm); font-size: var(--kui-font-size-sm, 0.8125rem); font-weight: 500; line-height: 1.4; transform: translateX(-50%); }
+.kui-tooltip--top .kui-tooltip__bubble { bottom: calc(100% + 0.5rem); }
+.kui-tooltip--bottom .kui-tooltip__bubble { top: calc(100% + 0.5rem); }

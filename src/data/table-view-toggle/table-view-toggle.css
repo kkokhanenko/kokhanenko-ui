@@ -1,0 +1,6 @@
+@layer kui.components {
+.kui-table-view-toggle { display: inline-flex; align-items: center; gap: 0.1875rem; min-height: var(--kui-control-height-md); padding: 0.1875rem; border: 1px solid var(--kui-color-border-strong); border-radius: var(--kui-radius-md); background: var(--kui-color-surface); }
+.kui-table-view-toggle button { display: inline-grid; place-items: center; width: 2rem; height: 2rem; padding: 0; border: 0; border-radius: calc(var(--kui-radius-sm) - 2px); color: var(--kui-color-text-muted); background: transparent; font: inherit; font-size: 1.05rem; font-weight: 700; cursor: pointer; }
+.kui-table-view-toggle button:hover, .kui-table-view-toggle button:focus-visible, .kui-table-view-toggle .kui-table-view-toggle__button--active { color: var(--kui-color-primary); background: var(--kui-color-primary-soft); }
+.kui-table-view-toggle button:focus-visible { outline: 0; box-shadow: var(--kui-focus-ring); }
+}

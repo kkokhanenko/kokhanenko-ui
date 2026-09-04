@@ -1,0 +1,38 @@
+@layer kui.components {
+.kui-data-table { position: relative; min-width: 0; color: var(--kui-color-text); }
+.kui-data-table__scroll { width: 100%; min-width: 0; overflow-x: auto; overscroll-behavior-x: contain; border: 1px solid var(--kui-color-border); border-radius: var(--kui-radius-md); scrollbar-gutter: stable; scrollbar-width: thin; }
+.kui-data-table table { width: max-content; min-width: 100%; border-collapse: collapse; }
+.kui-data-table th, .kui-data-table td { box-sizing: border-box; padding: var(--kui-space-3); border-bottom: 1px solid var(--kui-color-border); text-align: left; vertical-align: top; }
+.kui-data-table th { position: relative; color: var(--kui-color-text-muted); background: var(--kui-color-surface-subtle); font-size: 0.75rem; font-weight: 800; letter-spacing: 0.04em; text-transform: uppercase; }
+.kui-data-table__header-content { display: grid; gap: var(--kui-space-2); min-width: 0; }
+.kui-data-table__row:last-child > td { border-bottom: 0; }
+.kui-data-table__row--clickable { cursor: pointer; }
+.kui-data-table__row--clickable:hover > td { background: color-mix(in oklch, var(--kui-color-primary-soft) 42%, transparent); }
+.kui-data-table__sort { display: inline-flex; align-items: center; justify-content: space-between; gap: var(--kui-space-2); width: 100%; padding: 0; border: 0; color: inherit; background: transparent; font: inherit; font-weight: inherit; letter-spacing: inherit; text-align: inherit; text-transform: inherit; cursor: pointer; }
+.kui-data-table__sort:focus-visible, .kui-data-table__resizer:focus-visible { outline: 0; box-shadow: var(--kui-focus-ring); }
+.kui-data-table__resizer { position: absolute; z-index: 2; top: 0; right: -0.25rem; width: 0.5rem; height: 100%; cursor: col-resize; touch-action: none; }
+.kui-data-table__resizer::after { position: absolute; top: 20%; bottom: 20%; left: calc(50% - 1px); width: 2px; border-radius: 999px; background: transparent; content: ''; }
+.kui-data-table__resizer:hover::after, .kui-data-table__resizer:focus-visible::after { background: var(--kui-color-primary); }
+.kui-data-table__selection-column, .kui-data-table__selection-cell { width: 2.75rem; min-width: 2.75rem; text-align: center !important; }
+.kui-data-table__selection-cell input { width: 1rem; height: 1rem; margin: 0; }
+.kui-data-table__cell--center { text-align: center !important; }
+.kui-data-table__cell--end { text-align: right !important; font-variant-numeric: tabular-nums; }
+.kui-data-table__cell-content { min-width: 0; }
+.kui-data-table__empty { padding: var(--kui-space-8) !important; color: var(--kui-color-text-muted); text-align: center !important; }
+.kui-data-table__loading { position: absolute; z-index: 3; inset: 0; display: flex; align-items: center; justify-content: center; gap: var(--kui-space-2); border-radius: var(--kui-radius-md); background: color-mix(in oklch, var(--kui-color-surface) 78%, transparent); backdrop-filter: blur(1px); }
+.kui-data-table__spinner { width: 1.125rem; height: 1.125rem; border: 2px solid var(--kui-color-border-strong); border-top-color: var(--kui-color-primary); border-radius: 50%; animation: kui-data-table-spin 0.8s linear infinite; }
+.kui-data-table--loading .kui-data-table__scroll { min-height: 8rem; }
+@keyframes kui-data-table-spin { to { transform: rotate(1turn); } }
+
+.kui-data-table--cards .kui-data-table__scroll { overflow: visible; border: 0; scrollbar-gutter: auto; }
+.kui-data-table--cards table { display: block; width: 100%; min-width: 0; }
+.kui-data-table--cards colgroup, .kui-data-table--cards thead { display: none; }
+.kui-data-table--cards tbody { display: grid; gap: var(--kui-space-3); }
+.kui-data-table--cards tr { display: grid; gap: var(--kui-space-3); padding: var(--kui-space-4); border: 1px solid var(--kui-color-border); border-radius: var(--kui-radius-md); background: var(--kui-color-surface); }
+.kui-data-table--cards td { display: grid; grid-template-columns: minmax(7rem, 0.36fr) minmax(0, 1fr); align-items: start; gap: var(--kui-space-3); min-width: 0; padding: 0; border: 0; text-align: left !important; }
+.kui-data-table--cards td::before { grid-column: 1; grid-row: 1; content: attr(data-label); color: var(--kui-color-text-muted); font-size: 0.75rem; font-weight: 800; letter-spacing: 0.04em; text-transform: uppercase; overflow-wrap: anywhere; }
+.kui-data-table--cards .kui-data-table__cell-content { grid-column: 2; grid-row: 1; min-width: 0; overflow-wrap: anywhere; }
+.kui-data-table--cards .kui-data-table__selection-cell { display: flex; justify-content: flex-end; width: auto; }
+.kui-data-table--cards .kui-data-table__selection-cell::before { content: none; }
+.kui-data-table--cards .kui-data-table__empty { display: block; }
+}

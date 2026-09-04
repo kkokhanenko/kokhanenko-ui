@@ -1,0 +1,20 @@
+@layer kui.components {
+.kui-table-filter { min-width: 0; color: var(--kui-color-text); font-size: var(--kui-font-size-sm); font-weight: 400; letter-spacing: normal; text-transform: none; }
+.kui-table-filter .kui-select__trigger, .kui-table-filter__trigger { width: 100%; min-height: var(--kui-control-height-sm); }
+.kui-table-filter__multi-value { display: inline-flex; align-items: center; gap: var(--kui-space-2); min-width: 0; }
+.kui-table-filter__multi-value > span:first-child { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.kui-table-filter__count { display: inline-grid; flex: 0 0 auto; place-items: center; min-width: 1.25rem; height: 1.25rem; padding: 0 .3rem; border-radius: 999px; color: var(--kui-color-text-muted); background: var(--kui-color-neutral-soft); font-size: .72rem; font-weight: 800; line-height: 1; }
+.kui-table-filter__trigger { display: flex; align-items: center; justify-content: space-between; gap: var(--kui-space-2); padding: 0 var(--kui-space-2); border: 1px solid var(--kui-color-border-strong); border-radius: var(--kui-radius-sm); color: var(--kui-color-text); background: var(--kui-color-surface); font: inherit; cursor: pointer; }
+.kui-table-filter__trigger:focus-visible { outline: 0; border-color: var(--kui-color-primary); box-shadow: var(--kui-focus-ring); }
+.kui-table-filter__dot { width: .45rem; height: .45rem; margin-left: auto; border-radius: 50%; background: var(--kui-color-primary); }
+.kui-table-filter--active .kui-select__trigger, .kui-table-filter--active .kui-table-filter__trigger { border-color: var(--kui-color-primary); background: color-mix(in oklch, var(--kui-color-primary-soft) 45%, var(--kui-color-surface)); }
+.kui-table-filter__panel { position: fixed; z-index: 1000; display: grid; gap: var(--kui-space-3); width: min(22rem, calc(100vw - 1rem)); padding: var(--kui-space-3); border: 1px solid var(--kui-color-border); border-radius: var(--kui-radius-md); background: var(--kui-color-surface); box-shadow: var(--kui-shadow-lg); }
+.kui-table-filter__range { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: var(--kui-space-2); }
+.kui-table-filter__range label { display: grid; gap: var(--kui-space-1); color: var(--kui-color-text-muted); font-size: var(--kui-font-size-sm); }
+.kui-table-filter__range input { box-sizing: border-box; width: 100%; min-height: var(--kui-control-height-md); padding: 0 var(--kui-space-2); border: 1px solid var(--kui-color-border-strong); border-radius: var(--kui-radius-sm); color: var(--kui-color-text); background: var(--kui-color-surface); font: inherit; color-scheme: light dark; }
+.kui-table-filter__range input:focus-visible { outline: 0; border-color: var(--kui-color-primary); box-shadow: var(--kui-focus-ring); }
+.kui-table-filter__actions { display: flex; justify-content: flex-end; gap: var(--kui-space-2); }
+.kui-table-filter__actions button { min-height: var(--kui-control-height-sm); padding: 0 var(--kui-space-3); border: 1px solid var(--kui-color-border-strong); border-radius: var(--kui-radius-sm); color: var(--kui-color-text); background: var(--kui-color-surface); font: inherit; cursor: pointer; }
+.kui-table-filter__actions button:last-child { border-color: var(--kui-color-primary); color: var(--kui-color-primary-contrast); background: var(--kui-color-primary); }
+.kui-table-filter__actions button:disabled { opacity: .45; cursor: default; }
+}
