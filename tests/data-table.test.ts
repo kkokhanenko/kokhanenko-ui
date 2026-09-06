@@ -2,6 +2,7 @@ import { mount } from '@vue/test-utils';
 import { nextTick } from 'vue';
 import { describe, expect, it } from 'vitest';
 import KDataTable from '../src/data/data-table/KDataTable.vue';
+import type { KDataTableColumn } from '../src/data/data-table/types';
 
 describe('KDataTable', () => {
   const columns = [
@@ -100,5 +101,33 @@ describe('KDataTable', () => {
     const interactive = mount(KDataTable, { props: { columns, rows, rowClickable: true } });
     await interactive.get('tbody tr').trigger('click');
     expect(interactive.emitted('rowClick')?.[0]).toEqual([rows[0]]);
+  });
+
+  it('renders a declarative actions column and emits the row context', async () => {
+    const actionColumns: KDataTableColumn<typeof rows[number]>[] = [
+      ...columns,
+      {
+        key: 'actions',
+        label: 'Действия',
+        kind: 'actions' as const,
+        actions: (row: typeof rows[number]) => [
+          { id: 'edit', label: `Изменить ${row.name}` },
+          { id: 'delete', label: 'Удалить', tone: 'danger' as const },
+        ],
+      },
+    ];
+    const wrapper = mount(KDataTable, {
+      attachTo: document.body,
+      props: { columns: actionColumns as unknown as KDataTableColumn<object>[], rows },
+    });
+
+    expect(wrapper.findAll('.kui-action-menu__trigger')).toHaveLength(2);
+    expect(wrapper.findAll('.kui-action-menu__trigger')[0].attributes('aria-label')).toBe('Действия');
+    await wrapper.findAll('.kui-action-menu__trigger')[0].trigger('click');
+    const item = document.body.querySelector<HTMLButtonElement>('.kui-action-menu__item');
+    expect(item).not.toBeNull();
+    item!.click();
+    expect(wrapper.emitted('action')?.[0]?.[0]).toMatchObject({ row: rows[0], action: { id: 'edit' } });
+    wrapper.unmount();
   });
 });

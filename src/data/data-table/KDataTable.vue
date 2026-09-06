@@ -2,7 +2,9 @@
 import { computed, onBeforeUnmount, ref, watchEffect } from 'vue';
 import { useTableSelection } from '../../composables/useTableSelection';
 import { KTableFilterControl, type KTableFilterValue, type KTableFilterValues } from '../table-filters';
+import KActionMenu from '../../overlays/action-menu/KActionMenu.vue';
 import type {
+  KDataTableActionEvent,
   KDataTableColumn,
   KDataTableKey,
   KDataTableMode,
@@ -52,6 +54,7 @@ const emit = defineEmits<{
   sort: [key: string];
   'update:selectedKeys': [keys: KDataTableKey[]];
   'update:columnWidths': [widths: Record<string, number>];
+  action: [event: KDataTableActionEvent<TRow>];
   rowClick: [row: TRow];
   'update:filters': [filters: KTableFilterValues];
 }>();
@@ -63,6 +66,7 @@ const getRowKey = (row: TRow, index: number): KDataTableKey => {
   return typeof value === 'string' || typeof value === 'number' ? value : index;
 };
 const getCellValue = (column: KDataTableColumn<TRow>, row: TRow) => column.value ? column.value(row) : (row as Record<string, unknown>)[column.key];
+const getActions = (column: KDataTableColumn<TRow>, row: TRow) => column.actions?.(row) || [];
 const sortLabel = (column: KDataTableColumn<TRow>) => {
   if (props.sortKey !== column.key) return `Сортировать по столбцу «${column.label}»`;
   return props.sortDirection === 'asc'
@@ -211,9 +215,15 @@ onBeforeUnmount(() => resizeCleanup?.());
               :class="[column.cellClass, `kui-data-table__cell--${column.align || 'start'}`]"
               :data-label="column.label"
             >
-              <span class="kui-data-table__cell-content">
+              <span class="kui-data-table__cell-content" @click="column.kind === 'actions' && $event.stopPropagation()">
                 <slot :name="`cell-${column.key}`" :row="row" :value="getCellValue(column, row)" :column="column" :index="index">
-                  {{ getCellValue(column, row) }}
+                  <KActionMenu
+                    v-if="column.kind === 'actions'"
+                    :items="getActions(column, row)"
+                    :label="column.label"
+                    @select="action => emit('action', { row, action, column })"
+                  />
+                  <template v-else>{{ getCellValue(column, row) }}</template>
                 </slot>
               </span>
             </td>

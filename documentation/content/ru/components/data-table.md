@@ -1,7 +1,7 @@
 ---
 title: KDataTable
-description: Универсальная controlled-таблица с сортировкой, фильтрами и режимом карточек.
-tags: [component, table, sorting]
+description: Универсальная controlled-таблица с сортировкой, фильтрами, действиями и режимом карточек.
+tags: [component, table, sorting, actions]
 ---
 
 # KDataTable
@@ -68,7 +68,9 @@ function changeSort(key: string) {
 | --- | --- | --- |
 | `key` | `string` | Ключ колонки и имя scoped slot |
 | `label` | `string` | Заголовок и mobile label |
+| `kind` | `'text' \| 'actions'` | Тип отображения ячейки; `actions` показывает меню действий |
 | `value` | `(row) => unknown` | Вычисление значения вместо `row[key]` |
+| `actions` | `(row) => KDataTableAction[]` | Действия для колонки `kind: 'actions'` |
 | `sortable` | `boolean` | Показывает кнопку сортировки |
 | `align` | `'start' \| 'center' \| 'end'` | Выравнивание |
 | `width` | `number` | Начальная ширина в px |
@@ -106,6 +108,7 @@ function changeSort(key: string) {
 | `sort` | `key: string` |
 | `update:selectedKeys` | `KDataTableKey[]` |
 | `update:columnWidths` | `Record<string, number>` |
+| `action` | `{ row, action, column }` |
 | `rowClick` | исходный объект строки |
 | `update:filters` | полная карта фильтров |
 
@@ -117,6 +120,36 @@ function changeSort(key: string) {
 Для каждой колонки доступен `cell-<key>` со scope
 `{ row, value, column, index }`. Если slot отсутствует, выводится строковое
 представление вычисленного значения.
+
+## Колонка действий
+
+Для стандартного меню в ячейке задайте `kind: 'actions'` и функцию `actions`:
+
+```ts
+const columns: KDataTableColumn<User>[] = [
+  { key: 'name', label: 'Пользователь' },
+  {
+    key: 'actions',
+    label: 'Действия',
+    kind: 'actions',
+    actions: (row) => [
+      { id: 'edit', label: 'Редактировать' },
+      { id: 'delete', label: 'Удалить', tone: 'danger' },
+    ],
+  },
+];
+```
+
+Выбранное действие библиотека не выполняет, а сообщает приложению:
+
+```vue
+<KDataTable :columns="columns" :rows="users" @action="handleAction" />
+```
+
+`handleAction` получает `{ row, action, column }`; API-запросы, навигация,
+подтверждения и права доступа остаются ответственностью приложения. Если
+нужна нестандартная разметка, слот `cell-actions` имеет приоритет над
+стандартным меню.
 
 ## Cards mode и resize
 
