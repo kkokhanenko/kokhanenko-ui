@@ -33,6 +33,7 @@ npm install ../kokhanenko-ui
 ```ts
 import '@kokhanenko/ui/foundation';
 import { KButton } from '@kokhanenko/ui/button';
+import { KDisclosure } from '@kokhanenko/ui/disclosure';
 ```
 
 Для сборщиков, которые требуют прямой CSS import, доступна эквивалентная
@@ -40,6 +41,10 @@ import { KButton } from '@kokhanenko/ui/button';
 
 ```vue
 <KButton :loading="saving" @click="save">Сохранить</KButton>
+
+<KDisclosure v-model="detailsOpen" title="Подробности">
+  Содержимое раскрываемого раздела
+</KDisclosure>
 ```
 
 Такой импорт не включает `KSelect`, `KModal`, `KAppShell` или их стили.

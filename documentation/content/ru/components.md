@@ -11,6 +11,7 @@ tags: [components, api]
 - [KButton](/kokhanenko-ui/ru/components/button/) — кнопка, варианты, размеры и loading.
 - [KSelect](/kokhanenko-ui/ru/components/select/) — одиночный и множественный выбор.
 - [KTabs и KToggle](/kokhanenko-ui/ru/components/tabs-toggle/) — навигационные вкладки и булев переключатель.
+- [KDisclosure](/kokhanenko-ui/ru/components/disclosure/) — доступный раскрываемый раздел с controlled-состоянием.
 
 ## Таблицы
 

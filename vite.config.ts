@@ -15,6 +15,7 @@ export default defineConfig({
         index: entry('src/index.ts'),
         foundation: entry('src/foundation/index.ts'),
         button: entry('src/controls/button/index.ts'),
+        disclosure: entry('src/controls/disclosure/index.ts'),
         select: entry('src/controls/select/index.ts'),
         toggle: entry('src/controls/toggle/index.ts'),
         tabs: entry('src/controls/tabs/index.ts'),

@@ -14,6 +14,7 @@ tags: [api, typescript, imports]
 | `@kokhanenko/ui/foundation` | CSS tokens и base styles через JS entry |
 | `@kokhanenko/ui/foundation.css` | Прямой CSS entry foundation |
 | `@kokhanenko/ui/button` | `KButton` |
+| `@kokhanenko/ui/disclosure` | `KDisclosure` |
 | `@kokhanenko/ui/select` | `KSelect`, `KSelectOption`, `KSelectValue` |
 | `@kokhanenko/ui/tabs` | `KTabs`, `KTabOption` |
 | `@kokhanenko/ui/toggle` | `KToggle` |

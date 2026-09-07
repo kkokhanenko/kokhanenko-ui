@@ -29,6 +29,10 @@
       "types": "./dist/types/controls/button/index.d.ts",
       "import": "./dist/button.js"
     },
+    "./disclosure": {
+      "types": "./dist/types/controls/disclosure/index.d.ts",
+      "import": "./dist/disclosure.js"
+    },
     "./select": {
       "types": "./dist/types/controls/select/index.d.ts",
       "import": "./dist/select.js"

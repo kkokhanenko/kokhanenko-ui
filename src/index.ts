@@ -1,6 +1,7 @@
 export * from './foundation';
 export * from './types';
 export * from './controls/button';
+export * from './controls/disclosure';
 export * from './controls/select';
 export * from './controls/tabs';
 export * from './controls/toggle';
